@@ -1,0 +1,101 @@
+:root {
+  --circle-background-img: url('');
+}
+
+.globe{
+  position: relative;
+  height: 450px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  // display: inline-block;
+  // margin: 200px;
+  margin: auto;
+}
+
+.view {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  perspective: 700;
+}
+
+.plane {
+  width: 120px;
+  height: 120px;
+  transform-style: preserve-3d;
+
+  &.main {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: rotateX(60deg) rotateZ(-30deg);
+    animation: rotate 10s infinite linear;
+
+    .circle {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      transform-style: preserve-3d;
+      border-radius: 100%;
+      box-sizing: border-box;
+      box-shadow: 0 0 60px #2196f3, inset 0 0 60px #2196f3;
+
+      &:before,
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 36%;
+        height: 36%;
+        border-radius: 100%;
+        background-image: var(--circle-background-img);
+        background-size: 72px;
+        box-sizing: border-box;
+        // box-shadow: 0 0 60px 2px #2196f3;
+      }
+
+      &:before {
+        transform: translateZ(-140px);
+      }
+
+      &:after {
+        transform: translateZ(140px);
+      }
+
+      &:nth-child(1) {
+        transform: rotateZ(72deg) rotateX(63.435deg);
+      }
+      &:nth-child(2) {
+        transform: rotateZ(144deg) rotateX(63.435deg);
+      }
+      &:nth-child(3) {
+        transform: rotateZ(216deg) rotateX(63.435deg);
+      }
+      &:nth-child(4) {
+        transform: rotateZ(288deg) rotateX(63.435deg);
+      }
+      &:nth-child(5) {
+        transform: rotateZ(360deg) rotateX(63.435deg);
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0);
+  }
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+  }
+}
