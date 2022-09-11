@@ -11,8 +11,11 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useState } from 'react';
 import { Container } from '@mui/material';
 import { formatFiatTicker } from '../../../utils/formatter';
+import { SupportedLanguage } from '../../../service/translator/types';
+import { Translator } from '../../../service/translator';
 
 interface Props {
+  language: SupportedLanguage;
   comparedCurrency: string;
   comparedCurrencies: string[];
   updateComparedCurrency: (id: string) => void;
@@ -22,6 +25,7 @@ function ComparedCurrencyLogic({
   comparedCurrency,
   comparedCurrencies,
   updateComparedCurrency,
+  language,
 }: Props) {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -38,29 +42,45 @@ function ComparedCurrencyLogic({
       style={{
         position: 'fixed',
         padding: 20,
-        width: 140,
+        width: 100,
         right: 0,
+        zIndex: 999,
       }}
     >
       <Button variant='contained' fullWidth onClick={() => setOpen(true)}>
         {comparedCurrency}
       </Button>
       <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
-        <DialogTitle>Choose compared currency</DialogTitle>
+        <DialogTitle>
+          {Translator.getTranslation('chooseComparedCurrency', language, {
+            capitalizeFirstLetter: true,
+          })}
+        </DialogTitle>
         <DialogContent>
           <Box component='form'>
-            <FormControl sx={{ m: 1 }} style={{ width: 120 }}>
-              <InputLabel htmlFor='dialog-select-label'>Fiat</InputLabel>
+            <FormControl sx={{ m: 1 }} style={{ width: 180 }}>
+              <InputLabel htmlFor='dialog-select-label'>
+                {Translator.getTranslation('fiat', language, {
+                  capitalizeFirstLetter: true,
+                })}
+              </InputLabel>
               <Select
                 value={comparedCurrency}
                 onChange={handleChange}
-                input={<OutlinedInput label='Fiat' id='dialog-select-label' />}
+                input={
+                  <OutlinedInput
+                    label={Translator.getTranslation('fiat', language, {
+                      capitalizeFirstLetter: true,
+                    })}
+                    id='dialog-select-label'
+                  />
+                }
               >
-                {comparedCurrencies.map(curr => 
+                {comparedCurrencies.map((curr) => (
                   <MenuItem value={curr}>
                     {formatFiatTicker(curr)} {curr.toUpperCase()}
                   </MenuItem>
-                )}
+                ))}
               </Select>
             </FormControl>
           </Box>

@@ -1,17 +1,20 @@
 import { Avatar, Button, Stack, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import PropTypes from 'prop-types';
-import { Coin } from '../../../service/types';
+import { Coin } from '../../../service/crypto/types';
+import { Translator } from '../../../service/translator';
+import { SupportedLanguage } from '../../../service/translator/types';
 
 interface Props {
   coin: Coin;
+  language: SupportedLanguage;
   onCoinClick: (coin: Coin) => void;
 }
 
 function CoinInfo(props: Props) {
   return (
     <Stack direction='row' spacing={2}>
-      <Avatar src={props.coin.icon} />
+      <Avatar src={props.coin.icon} style={{ margin: 'auto' }} />
       <Container style={{ margin: 'auto' }}>
         <Typography variant='body1'>{props.coin.name}</Typography>
       </Container>
@@ -21,7 +24,9 @@ function CoinInfo(props: Props) {
         size='small'
         fullWidth={true}
       >
-        Show stats
+        {Translator.getTranslation('showStats', props.language, {
+          uppercase: true,
+        })}
       </Button>
     </Stack>
   );

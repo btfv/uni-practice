@@ -11,8 +11,13 @@ import {
   Tooltip,
   ComposedChart,
 } from 'recharts';
-import { ServiceManager } from '../../../service';
-import { Coin } from '../../../service/types';
+import { ServiceManager } from '../../../service/crypto';
+import { Coin } from '../../../service/crypto/types';
+import { Translator } from '../../../service/translator';
+import {
+  SupportedLanguage,
+  SupportedTag,
+} from '../../../service/translator/types';
 import Loader from '../loader';
 import { DAYS, MIN_LOADING_TIME } from './constants';
 import { HistoryItem, HistoryProperties } from './types';
@@ -25,15 +30,16 @@ const formatter = Intl.NumberFormat('en', {
 interface Props {
   currency: Coin;
   comparedFiatCurrency: string;
+  language: SupportedLanguage;
 }
 
-const keyToTitle: Record<HistoryProperties, string> = {
-  volume: 'Volume',
-  price: 'Price',
-  marketCap: 'Market cap',
+const keyToTitle: Record<HistoryProperties, SupportedTag> = {
+  volume: 'totalVolume',
+  price: 'price',
+  marketCap: 'marketCap',
 };
 
-function CoinHistory({ currency, comparedFiatCurrency }: Props) {
+function CoinHistory({ currency, comparedFiatCurrency, language }: Props) {
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [days, setDays] = useState<number>(DAYS[1]);
 
@@ -111,7 +117,11 @@ function CoinHistory({ currency, comparedFiatCurrency }: Props) {
                 dataKey={historyProperty}
                 stroke='#8884d8'
                 activeDot={{ r: 8 }}
-                name={keyToTitle[historyProperty]}
+                name={Translator.getTranslation(
+                  keyToTitle[historyProperty],
+                  language,
+                  { capitalizeFirstLetter: true }
+                )}
               />
             </ComposedChart>
           </ResponsiveContainer>
@@ -137,7 +147,9 @@ function CoinHistory({ currency, comparedFiatCurrency }: Props) {
                   focusRipple={true}
                   onClick={() => setHistoryProperty(key as HistoryProperties)}
                 >
-                  {title}
+                  {Translator.getTranslation(title, language, {
+                    uppercase: true,
+                  })}
                 </Button>
               ))}
             </ButtonGroup>
