@@ -1,3 +1,4 @@
+import { Flags } from '../flags';
 import {
   languageTagToNameMapper,
   supportedLanguages,
@@ -10,11 +11,9 @@ export const DEFAULT_LANGUAGE: SupportedLanguage = supportedLanguages[0];
 
 export class Translator {
   public static async getSupportedLanguages(): Promise<LanguageInfo[]> {
-    return supportedLanguages.map((tag) => ({
-      tag,
-      imgUrl: `https://countryflagsapi.com/png/${tag}`,
-      name: languageTagToNameMapper[tag],
-    }));
+    return Promise.all(
+      supportedLanguages.map(async (tag) => this.getLanguageInfo(tag))
+    );
   }
 
   public static async getLanguageInfo(
@@ -22,7 +21,7 @@ export class Translator {
   ): Promise<LanguageInfo> {
     return {
       tag,
-      imgUrl: `https://countryflagsapi.com/png/${tag}`,
+      imgUrl: Flags.getImgByCountryCode(tag),
       name: languageTagToNameMapper[tag],
     };
   }
