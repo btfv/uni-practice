@@ -1,4 +1,4 @@
-export const supportedLanguages = ['gb', 'ru'] as const;
+export const supportedLanguages = ['ru', 'gb'] as const;
 
 export const languageTagToNameMapper: {
   [lang in typeof supportedLanguages[number]]: string;
