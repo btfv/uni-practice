@@ -15,7 +15,7 @@ export const supportedTags = [
   'marketCap',
   'currentPrice',
   'totalVolume',
-  'chooseComparedLanguage',
+  'chooseLanguage',
   'language',
   'changeLanguage',
   'changeComparedCurrency',
@@ -59,9 +59,9 @@ export const translations: Translations = {
     gb: 'total volume',
     ru: 'общий объем торгов',
   },
-  chooseComparedLanguage: {
-    gb: 'choose compared language',
-    ru: 'выберете язык для сравнения',
+  chooseLanguage: {
+    gb: 'choose language',
+    ru: 'выберете язык',
   },
   language: {
     gb: 'language',

@@ -74,7 +74,7 @@ function LanguageLogic({ language = DEFAULT_LANGUAGE, updateLanguage }: Props) {
       </Button>
       <Dialog disableEscapeKeyDown open={open} onClose={handleClose}>
         <DialogTitle>
-          {Translator.getTranslation('chooseComparedLanguage', language, {
+          {Translator.getTranslation('chooseLanguage', language, {
             capitalizeFirstLetter: true,
           })}
         </DialogTitle>
