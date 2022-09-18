@@ -11,13 +11,13 @@ import {
   Tooltip,
   ComposedChart,
 } from 'recharts';
-import { ServiceManager } from '../../../service/crypto';
-import { Coin } from '../../../service/crypto/types';
-import { Translator } from '../../../service/translator';
+import { ServiceManager } from '../../../services/crypto';
+import { Coin } from '../../../services/crypto/types';
+import { Translator } from '../../../services/translator';
 import {
   SupportedLanguage,
   SupportedTag,
-} from '../../../service/translator/types';
+} from '../../../services/translator/types';
 import Loader from '../loader';
 import { DAYS, MIN_LOADING_TIME } from './constants';
 import { HistoryItem, HistoryProperties } from './types';

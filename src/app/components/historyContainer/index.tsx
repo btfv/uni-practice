@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { Container } from '@mui/material';
 import CoinHistory from '../history';
 
-import { Coin } from '../../../service/crypto/types';
+import { Coin } from '../../../services/crypto/types';
 import Loader from '../loader';
-import { SupportedLanguage } from '../../../service/translator/types';
+import { SupportedLanguage } from '../../../services/translator/types';
 
 interface Props {
   language: SupportedLanguage;

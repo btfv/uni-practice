@@ -10,11 +10,11 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useEffect, useState } from 'react';
 import { Container } from '@mui/material';
-import { DEFAULT_LANGUAGE, Translator } from '../../../service/translator';
+import { DEFAULT_LANGUAGE, Translator } from '../../../services/translator';
 import {
   LanguageInfo,
   SupportedLanguage,
-} from '../../../service/translator/types';
+} from '../../../services/translator/types';
 
 interface Props {
   language?: SupportedLanguage;

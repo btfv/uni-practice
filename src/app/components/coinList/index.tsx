@@ -10,12 +10,12 @@ import {
   TableRow,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { ServiceManager } from '../../../service/crypto';
-import { Coin } from '../../../service/crypto/types';
+import { ServiceManager } from '../../../services/crypto';
+import { Coin } from '../../../services/crypto/types';
 import { formatAmount, formatFiatTicker } from '../../../utils/formatter';
 import CoinInfo from '../coin';
-import { SupportedLanguage } from '../../../service/translator/types';
-import { Translator } from '../../../service/translator';
+import { SupportedLanguage } from '../../../services/translator/types';
+import { Translator } from '../../../services/translator';
 
 interface Props {
   language: SupportedLanguage;

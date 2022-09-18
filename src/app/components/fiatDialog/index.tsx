@@ -11,8 +11,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useState } from 'react';
 import { Container } from '@mui/material';
 import { formatFiatTicker } from '../../../utils/formatter';
-import { SupportedLanguage } from '../../../service/translator/types';
-import { Translator } from '../../../service/translator';
+import { SupportedLanguage } from '../../../services/translator/types';
+import { Translator } from '../../../services/translator';
 
 interface Props {
   language: SupportedLanguage;

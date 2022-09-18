@@ -1,9 +1,9 @@
 import { Avatar, Button, Stack, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import PropTypes from 'prop-types';
-import { Coin } from '../../../service/crypto/types';
-import { Translator } from '../../../service/translator';
-import { SupportedLanguage } from '../../../service/translator/types';
+import { Coin } from '../../../services/crypto/types';
+import { Translator } from '../../../services/translator';
+import { SupportedLanguage } from '../../../services/translator/types';
 
 interface Props {
   coin: Coin;
