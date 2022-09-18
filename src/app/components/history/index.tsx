@@ -132,7 +132,11 @@ function CoinHistory({ currency, comparedFiatCurrency, language }: Props) {
               style={{ float: 'left' }}
             >
               {DAYS.map((day) => (
-                <Button onClick={() => setDays(day)} focusRipple={true}>
+                <Button
+                  onClick={() => setDays(day)}
+                  focusRipple={true}
+                  key={day}
+                >
                   {day}
                 </Button>
               ))}
@@ -146,6 +150,7 @@ function CoinHistory({ currency, comparedFiatCurrency, language }: Props) {
                 <Button
                   focusRipple={true}
                   onClick={() => setHistoryProperty(key as HistoryProperties)}
+                  key={key}
                 >
                   {Translator.getTranslation(title, language, {
                     uppercase: true,

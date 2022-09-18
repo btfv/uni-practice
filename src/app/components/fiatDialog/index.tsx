@@ -77,7 +77,7 @@ function ComparedCurrencyLogic({
                 }
               >
                 {comparedCurrencies.map((curr) => (
-                  <MenuItem value={curr}>
+                  <MenuItem value={curr} key={curr}>
                     {formatFiatTicker(curr)} {curr.toUpperCase()}
                   </MenuItem>
                 ))}

@@ -100,7 +100,7 @@ function LanguageLogic({ language = DEFAULT_LANGUAGE, updateLanguage }: Props) {
                   }
                 >
                   {languages.map(({ tag, imgUrl, name }) => (
-                    <MenuItem value={tag}>
+                    <MenuItem value={tag} key={tag}>
                       <img src={imgUrl} width={25} style={{ marginRight: 5 }} />
                       {name.toUpperCase()}
                     </MenuItem>
