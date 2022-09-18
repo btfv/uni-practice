@@ -6,6 +6,7 @@ import { DEFAULT_LANGUAGE, Translator } from '../services/translator';
 import { SupportedLanguage } from '../services/translator/types';
 import CoinList from './components/coinList';
 import ComparedCurrencyLogic from './components/fiatDialog';
+import Footer from './components/footer';
 import HistoryContainer from './components/historyContainer';
 import LanguageLogic from './components/languagePicker';
 
@@ -85,6 +86,7 @@ function App() {
           onCoinClick={(coin) => setPickedCurrency(coin)}
         />
       )}
+      <Footer />
     </Box>
   );
 }
