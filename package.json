@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/btfv/uni-practice.git"
+  },
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@emotion/react": "^11.10.0",

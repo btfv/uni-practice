@@ -21,6 +21,7 @@ function Footer() {
               />
             </svg>
           }
+          href={process.env.REPO_URL}
         >
           Исходный код
         </Button>
