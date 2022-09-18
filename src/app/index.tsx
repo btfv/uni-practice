@@ -31,6 +31,15 @@ function App() {
     fetchCurrencies();
   }, []);
 
+  useEffect(
+    function updatePageTitle() {
+      document.title = Translator.getTranslation('cryptocurrencies', language, {
+        capitalizeFirstLetter: true,
+      });
+    },
+    [language]
+  );
+
   return (
     <Box
       sx={{
